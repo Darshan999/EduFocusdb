@@ -17,6 +17,7 @@ var news = require('./routes/news');
 var notes = require('./routes/notes');
 var subjects = require('./routes/subjects');
 var videos = require('./routes/videos');
+//var answers_likes = require('./routes/answers_likes');
 
 
 var app = express();
@@ -46,6 +47,7 @@ app.use('/news',news);
 
 app.use('/subjects',subjects);
 app.use('/videos',videos);
+//app.use('/answers_likes',answers_likes);
 
 
 // catch 404 and forward to error handler
