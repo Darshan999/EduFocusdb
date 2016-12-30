@@ -21,6 +21,7 @@ deleteNews:function(id,callback){
  updateNews:function(id,News,callback){
   return db.query("update news_tbl set news_title=?,news_desc=?,news_photo=? where news_id=?",[News.news_title,News.news_desc,News.news_photo,id],callback);
  }
+
  
 };
  module.exports=News;

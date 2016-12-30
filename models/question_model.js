@@ -22,7 +22,14 @@ deleteQuestion:function(id,callback){
  
  updateQuestion:function(id,Question,callback){
   return db.query("update question_tbl set que_title=?,que_desc=?,que_photo=? where que_id=?",[Question.que_title,Question.que_desc,Question.que_photo,id],callback);
- }
+ },
+getAllQuestionjoin:function(callback){
+ 
+return db.query("Select q.*,s.*,u.* from question_tbl as q,subject_tbl as s,user_tbl as u where q.fk_sub_id=s.sub_id and q.fk_u_email_id=u.u_email_id",callback);
+ 
+}
+ 
+
 
 };
 

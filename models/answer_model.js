@@ -22,7 +22,12 @@ deleteAnswer:function(id,callback){
  
  updateAnswer:function(id,Answer,callback){
   return db.query("update answer_tbl set ans_desc=? where ans_id=?",[Answer.ans_desc,id],callback);
- }
+ },
+ getAllAnswerjoin:function(callback){
+ 
+return db.query("Select a.*,q.*,u.* from answer_tbl as a,question_tbl as q,user_tbl as u where a.fk_que_id=q.que_id and a.fk_u_email_id=u.u_email_id",callback);
+ 
+}
 
 };
 

@@ -24,7 +24,12 @@ deleteNote:function(id,callback){
 
  updateNote:function(id,Note,callback){
   return db.query("update notes_tbl set notes_title=? where notes_id=?",[Note.notes_title,id],callback);
- }
+ },
+ getAllNotesjoin:function(callback){
+ 
+return db.query("Select n.*,s.*,u.* from notes_tbl as n,subject_tbl as s,user_tbl as u where n.fk_sub_id=s.sub_id and n.fk_u_email_id=u.u_email_id",callback);
+ 
+}
 
 };
 
