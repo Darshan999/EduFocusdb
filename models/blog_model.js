@@ -22,7 +22,13 @@ deleteBlog:function(id,callback){
  
  updateBlog:function(id,Blog,callback){
   return db.query("update blog_tbl set blog_title=?,blog_desc=?,blog_photo=? where blog_id=?",[Blog.blog_title,Blog.blog_desc,Blog.blog_photo,id],callback);
- }
+ },
+
+getAllBlogjoin:function(callback){
+ 
+return db.query("Select b.*,s.*,u.* from blog_tbl as b,subject_tbl as s,user_tbl as u where b.fk_sub_id=s.sub_id and b.fk_u_email_id=u.u_email_id",callback);
+ 
+}
 
 };
 
