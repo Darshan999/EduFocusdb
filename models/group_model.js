@@ -7,6 +7,11 @@ getAllGroups:function(callback){
 return db.query("Select * from group_tbl",callback);
  
 },
+getAllGroupsjoin:function(callback){
+ 
+return db.query("Select g.*,s.*,u.* from group_tbl as g,subject_tbl as s,user_tbl as u where g.fk_u_email_id=u.u_email_id and g.fk_sub_id=s.sub_id",callback);
+ 
+},
  getGroupById:function(id,callback){
  
 return db.query("select * from group_tbl where grp_id=?",[id],callback);

@@ -7,6 +7,11 @@ getAllVideos:function(callback){
 return db.query("Select * from video_tbl",callback);
  
 },
+getAllVideosjoin:function(callback){
+ 
+return db.query("Select v.*,u.*,s.* from video_tbl as v,user_tbl as u,subject_tbl as s where v.fk_u_email_id=u.u_email_id and v.fk_sub_id=s.sub_id",callback);
+ 
+},
  getVideoById:function(id,callback){
  
 return db.query("select * from video_tbl where video_id=?",[id],callback);

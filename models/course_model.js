@@ -7,6 +7,13 @@ getAllCourses:function(callback){
 return db.query("Select * from course_tbl",callback);
  
 },
+
+getAllCoursesjoin:function(callback){
+ 
+return db.query("select c.*,u.*,s.* from course_tbl as c,user_tbl as u,subject_tbl as s where c.fk_u_email_id=u.u_email_id and c.fk_sub_id=s.sub_id",callback);
+ 
+},
+
  getCourseById:function(id,callback){
  
 return db.query("select * from course_tbl where course_id=?",[id],callback);
