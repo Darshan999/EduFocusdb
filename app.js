@@ -22,8 +22,7 @@ var notes = require('./routes/notes');
 var notesjoin = require('./routes/notesjoin');
 var subjects = require('./routes/subjects');
 var subjectjoin = require('./routes/subjectjoin');
-var videos = require('./routes/videos');
-var videojoin = require('./routes/videojoin');
+
 //var answers_likes = require('./routes/answers_likes');
 
 
@@ -53,14 +52,12 @@ app.use('/blogjoin',blogjoin);
 app.use('/notes',notes);
 app.use('/notesjoin',notesjoin);
 app.use('/courses',courses);
-app.use('/coursejoin',coursejoin);
+
 app.use('/groups',groups);
 app.use('/groupjoin',groupjoin);
 app.use('/news',news);
 app.use('/subjects',subjects);
 app.use('/subjectjoin',subjectjoin);
-app.use('/videos',videos);
-app.use('/videojoin',videojoin);
 //app.use('/answers_likes',answers_likes);
 
 
