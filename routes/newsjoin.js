@@ -1,11 +1,11 @@
 var express = require('express');
  var router = express.Router();
- var Video=require('../models/video_model');
+ var News=require('../models/news_model');
  
-router.get('/:id?',function(req,res,next){
+router.get('/',function(req,res,next){
 
 
-    Video.getAllVideosjoin(function(err,rows){
+    News.getAllNewsjoin(function(err,rows){
 
         if(err)
         {
