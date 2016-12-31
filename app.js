@@ -14,10 +14,11 @@ var answers = require('./routes/answers');
 var blogs = require('./routes/blogs');
 var blogjoin = require('./routes/blogjoin');
 var courses = require('./routes/courses');
-var coursejoin = require('./routes/coursejoin');
+
 var groups = require('./routes/groups');
 var groupjoin = require('./routes/groupjoin');
 var news = require('./routes/news');
+var newsjoin = require('./routes/newsjoin');
 var notes = require('./routes/notes');
 var notesjoin = require('./routes/notesjoin');
 var subjects = require('./routes/subjects');
@@ -56,8 +57,12 @@ app.use('/courses',courses);
 app.use('/groups',groups);
 app.use('/groupjoin',groupjoin);
 app.use('/news',news);
+app.use('/newsjoin',newsjoin);
 app.use('/subjects',subjects);
 app.use('/subjectjoin',subjectjoin);
+
+
+
 //app.use('/answers_likes',answers_likes);
 
 

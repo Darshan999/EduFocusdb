@@ -13,7 +13,7 @@ return db.query("select * from notes_tbl where notes_id=?",[id],callback);
  },
 
  addNote:function(Note,callback){
- return db.query("Insert into notes_tbl values(?,?,?,?)",[Note.notes_id,Note.notes_title,Note.fk_u_email_id,Note.fk_sub_id],callback);
+ return db.query("Insert into notes_tbl values(?,?,?,?,?)",[Note.notes_id,Note.notes_title,Note.notes,Note.fk_u_email_id,Note.fk_sub_id],callback);
  },
 
 deleteNote:function(id,callback){
@@ -23,7 +23,7 @@ deleteNote:function(id,callback){
 
 
  updateNote:function(id,Note,callback){
-  return db.query("update notes_tbl set notes_title=? where notes_id=?",[Note.notes_title,id],callback);
+  return db.query("update notes_tbl set notes_title=?,notes=? where notes_id=?",[Note.notes_title,Note.notes,id],callback);
  },
  getAllNotesjoin:function(callback){
  

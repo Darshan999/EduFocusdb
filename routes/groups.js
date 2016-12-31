@@ -63,19 +63,5 @@ if(err)
 });
  });
 
-router.put('/:id',function(req,res,next){
- 
-Group.updateGroup(req.params.id,req.body,function(err,rows){
- 
-if(err)
-  {
-  res.json(err);
-  }
-  else
-  {
-  res.json(rows);
-  }
-  });
- });
  
  module.exports=router;
