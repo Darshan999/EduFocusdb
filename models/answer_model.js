@@ -13,7 +13,7 @@ return db.query("select * from answer_tbl where ans_id=?",[id],callback);
  },
 
  addAnswer:function(Answer,callback){
- return db.query("Insert into answer_tbl values(?,?,?,?,?,?,?)",[Answer.ans_id,Answer.ans_desc,Answer.ans_date,Answer.ans_time,Answer.view,Answer.fk_que_id,Answer.fk_u_email_id],callback);
+ return db.query("Insert into answer_tbl values(?,?,?,?,?,?,?,?)",[Answer.ans_id,Answer.ans_desc,Answer.ans_date,Answer.ans_time,Answer.flag,Answer.view,Answer.fk_que_id,Answer.fk_u_email_id],callback);
  },
 
 deleteAnswer:function(id,callback){

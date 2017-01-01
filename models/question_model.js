@@ -19,6 +19,16 @@ return db.query("select * from question_tbl where que_id=?",[id],callback);
 deleteQuestion:function(id,callback){
   return db.query("delete from question_tbl where que_id=?",[id],callback);
  },
+
+ deleteAll:function(item,callback){
+
+var delarr=[];
+    for(i=0;i<item.length;i++){
+
+        delarr[i]=item[i].que_id;
+    }
+    return db.query("delete from question_tbl where que_id in (?)",[delarr],callback);
+ },
  
  updateQuestion:function(id,Question,callback){
   return db.query("update question_tbl set que_title=?,que_desc=?,que_photo=? where que_id=?",[Question.que_title,Question.que_desc,Question.que_photo,id],callback);

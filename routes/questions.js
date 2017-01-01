@@ -50,6 +50,23 @@ Question.addQuestion(req.body,function(err,count){
   });
  });
 
+  router.post('/:id',function(req,res,next){
+ 
+    Question.deleteAll(req.body,function(err,count){
+    
+    if(err)
+      {
+      res.json(err);
+      }
+      else
+      {
+      res.json(count);
+      }
+    
+    });
+ 
+});
+
 router.delete('/:id',function(req,res,next){
  
 Question.deleteQuestion(req.params.id,function(err,count){
