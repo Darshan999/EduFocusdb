@@ -47,6 +47,23 @@ Course.addCourse(req.body,function(err,count){
   });
  });
 
+router.post('/:id',function(req,res,next){
+ 
+    Course.deleteAll(req.body,function(err,count){
+    
+    if(err)
+      {
+      res.json(err);
+      }
+      else
+      {
+      res.json(count);
+      }
+    
+    });
+      });
+
+
 router.delete('/:id',function(req,res,next){
  
 Course.deleteCourse(req.params.id,function(err,count){
@@ -77,5 +94,6 @@ if(err)
   }
   });
  });
- 
+
  module.exports=router;
+

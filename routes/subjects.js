@@ -34,6 +34,8 @@ else
 }
 });
 
+
+
 router.post('/',function(req,res,next){
  
 Subject.addSubject(req.body,function(err,count){
@@ -46,6 +48,24 @@ Subject.addSubject(req.body,function(err,count){
   }
   });
  });
+
+
+ router.post('/:id',function(req,res,next){
+ 
+    Subject.deleteAllSubject(req.body,function(err,count){
+    
+    if(err)
+      {
+      res.json(err);
+      }
+      else
+      {
+      res.json(count);
+      }
+    
+    });
+ 
+});
 
 router.delete('/:id',function(req,res,next){
  

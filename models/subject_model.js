@@ -17,6 +17,17 @@ return db.query("select * from subject_tbl where sub_id=?",[id],callback);
 deleteSubject:function(id,callback){
   return db.query("delete from subject_tbl where sub_id=?",[id],callback);
  },
+
+  deleteAllSubject:function(item,callback){
+
+    var delarr=[];
+    for(i=0;i<item.length;i++){
+
+        delarr[i]=item[i].sub_id;
+    }
+    return db.query("delete from subject_tbl where sub_id in (?)",[delarr],callback);
+ },
+
  
  updateSubject:function(id,Subject,callback){
   return db.query("update subject_tbl set sub_name=?,sub_photo=? where sub_id=?",[Subject.sub_name,Subject.sub_photo,id],callback);
