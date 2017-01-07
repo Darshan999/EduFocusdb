@@ -47,6 +47,24 @@ News.addNews(req.body,function(err,count){
   });
  });
 
+  router.post('/:id',function(req,res,next){
+ 
+    News.deleteAll(req.body,function(err,count){
+    
+    if(err)
+      {
+      res.json(err);
+      }
+      else
+      {
+      res.json(count);
+      }
+    
+    });
+ 
+});
+
+
 router.delete('/:id',function(req,res,next){
  
 News.deleteNews(req.params.id,function(err,count){

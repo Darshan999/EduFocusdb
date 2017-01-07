@@ -17,6 +17,16 @@ return db.query("select * from news_tbl where news_id=?",[id],callback);
 deleteNews:function(id,callback){
   return db.query("delete from news_tbl where news_id=?",[id],callback);
  },
+
+ deleteAll:function(item,callback){
+
+var delarr=[];
+    for(i=0;i<item.length;i++){
+
+        delarr[i]=item[i].news_id;
+    }
+    return db.query("delete from news_tbl where news_id in (?)",[delarr],callback);
+ },
  
  updateNews:function(id,News,callback){
   return db.query("update news_tbl set news_title=?,news_desc=?,news_photo=? where news_id=?",[News.news_title,News.news_desc,News.news_photo,id],callback);

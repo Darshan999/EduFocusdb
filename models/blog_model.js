@@ -19,7 +19,16 @@ return db.query("select * from blog_tbl where blog_id=?",[id],callback);
 deleteBlog:function(id,callback){
   return db.query("delete from blog_tbl where blog_id=?",[id],callback);
  },
- 
+
+ deleteAll:function(item,callback){
+
+var delarr=[];
+    for(i=0;i<item.length;i++){
+
+        delarr[i]=item[i].blog_id;
+    }
+    return db.query("delete from blog_tbl where blog_id in (?)",[delarr],callback);
+ },
  updateBlog:function(id,Blog,callback){
   return db.query("update blog_tbl set blog_title=?,blog_desc=?,blog_photo=? where blog_id=?",[Blog.blog_title,Blog.blog_desc,Blog.blog_photo,id],callback);
  },
