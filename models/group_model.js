@@ -21,7 +21,16 @@ return db.query("select * from group_tbl where grp_id=?",[id],callback);
  },
 deleteGroup:function(id,callback){
   return db.query("delete from group_tbl where grp_id=?",[id],callback);
- }
+ },
+ deleteAllGroups:function(item,callback){
+
+var delarr=[];
+    for(i=0;i<item.length;i++){
+
+        delarr[i]=item[i].grp_id;
+    }
+    return db.query("delete from group_tbl where grp_id in (?)",[delarr],callback);
+ },
  
 };
  module.exports=Group;

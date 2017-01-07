@@ -50,6 +50,23 @@ Note.addNote(req.body,function(err,count){
   });
  });
 
+ router.post('/:id',function(req,res,next){
+ 
+    Note.deleteAllNotes(req.body,function(err,count){
+    
+    if(err)
+      {
+      res.json(err);
+      }
+      else
+      {
+      res.json(count);
+      }
+    
+    });
+ 
+});
+
 router.delete('/:id',function(req,res,next){
  
 Note.deleteNote(req.params.id,function(err,count){

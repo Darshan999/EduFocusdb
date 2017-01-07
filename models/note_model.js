@@ -19,6 +19,17 @@ return db.query("select * from notes_tbl where notes_id=?",[id],callback);
 deleteNote:function(id,callback){
   return db.query("delete from notes_tbl where notes_id=?",[id],callback);
  },
+
+ deleteAllNotes:function(item,callback){
+
+var delarr=[];
+    for(i=0;i<item.length;i++){
+
+        delarr[i]=item[i].notes_id;
+    }
+    return db.query("delete from notes_tbl where notes_id in (?)",[delarr],callback);
+ },
+ 
  
 
 

@@ -12,6 +12,12 @@ return db.query("Select * from question_tbl",callback);
 return db.query("select * from question_tbl where que_id=?",[id],callback);
  },
 
+ getQuestionByIdJoin:function(id,callback){
+ 
+return db.query("Select q.*,s.*,u.* from question_tbl as q,subject_tbl as s,user_tbl as u where q.fk_sub_id=s.sub_id and q.fk_u_email_id=u.u_email_id and que_id=?",[id],callback);
+ },
+
+
  addQuestion:function(Question,callback){
  return db.query("Insert into question_tbl values(?,?,?,?,?,?,?,?,?,?)",[Question.que_id,Question.que_title,Question.que_desc,Question.que_date,Question.que_time,Question.que_photo,Question.flag,Question.view,Question.fk_u_email_id,Question.fk_sub_id],callback);
  },
