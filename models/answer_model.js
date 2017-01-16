@@ -14,7 +14,7 @@ return db.query("select * from answer_tbl where ans_id=?",[id],callback);
 
  getAnswerByIdJoin:function(id,callback){
  
-return db.query("Select a.*,q.*,u.* from answer_tbl as a,question_tbl as q,user_tbl as u where a.fk_que_id=q.que_id and a.fk_u_email_id=u.u_email_id and ans_id=?",[id],callback);
+return db.query("Select a.*,q.*,u.* from answer_tbl as a,question_tbl as q,user_tbl as u where a.fk_que_id=q.que_id and a.fk_u_email_id=u.u_email_id and fk_que_id=?",[id],callback);
  },
 
  addAnswer:function(Answer,callback){

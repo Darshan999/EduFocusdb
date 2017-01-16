@@ -1,5 +1,5 @@
 var db=require('../dbconnection'); //reference of dbconnection.js
- 
+  var fs = require('fs');
  var Subject={
 
 getAllSubjects:function(callback){
@@ -12,7 +12,30 @@ return db.query("Select * from subject_tbl",callback);
 return db.query("select * from subject_tbl where sub_id=?",[id],callback);
  },
  addSubject:function(Subject,callback){
- return db.query("Insert into subject_tbl values(?,?,?,?,?)",[Subject.sub_id,Subject.sub_name,Subject.sub_photo,Subject.fk_course_id,Subject.fk_u_email_id],callback);
+
+       var dt=new Date();//current date and time of server
+    var text = "";//random text
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    //var base64d=property.pro_image.replace(/^data:image\/png;base64,/, "");
+
+   // base64d=property.pro_image.replace(/^data:image\/jpg;base64,/, "");
+    // base64d=property.pro_image.replace(/^data:image\/jpeg;base64,/, "");
+    var pos=Subject.sub_photo.indexOf(",");
+    var base64d=Subject.sub_photo.substring(pos+1);
+    console.log(base64d);
+    var path="./public/images/subject/"+text+dt.getDate()+dt.getMonth()+dt.getMilliseconds()+".png";
+    var path1="/images/subject/"+text+dt.getDate()+dt.getMonth()+dt.getMilliseconds()+".png";
+    fs.writeFile(path,base64d,'base64',function(err){
+        if(err) {
+        return console.log(err);
+        }
+        console.log("The file was saved!");
+    });
+
+ return db.query("Insert into subject_tbl values(?,?,?,?,?)",
+ [Subject.sub_id,Subject.sub_name,path1,Subject.fk_course_id,Subject.fk_u_email_id],callback);
  },
 deleteSubject:function(id,callback){
   return db.query("delete from subject_tbl where sub_id=?",[id],callback);
