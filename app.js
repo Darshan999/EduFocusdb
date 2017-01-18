@@ -24,6 +24,8 @@ var notesjoin = require('./routes/notesjoin');
 var subjects = require('./routes/subjects');
 var subjectjoin = require('./routes/subjectjoin');
 
+var answerbyquestionid = require('./routes/answerbyquestionid');
+
 //var answers_likes = require('./routes/answers_likes');
 
 
@@ -60,6 +62,8 @@ app.use('/news',news);
 app.use('/newsjoin',newsjoin);
 app.use('/subjects',subjects);
 app.use('/subjectjoin',subjectjoin);
+
+app.use('/answerbyquestionid',answerbyquestionid);
 
 
 
