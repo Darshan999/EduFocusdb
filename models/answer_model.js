@@ -46,7 +46,7 @@ return db.query("Select a.*,q.*,u.* from answer_tbl as a,question_tbl as q,user_
 
 getAnswerByQuestionId:function(id,callback){
 
-    return db.query("select  a.*,q.*,u.* from answer_tbl as a,question_tbl as q,user_tbl as u where a.fk_que_id=q.que_id and a.fk_u_email_id=u.u_email_id and fk_que_id=?",[id],callback);
+    return db.query("select  a.*,u.* from answer_tbl as a,user_tbl as u where  a.fk_u_email_id=u.u_email_id and a.fk_que_id=?",[id],callback);
 }
 
 };

@@ -2,9 +2,9 @@ var express = require('express');
  var router = express.Router();
  var Answer=require('../models/answer_model');
 
- router.get('/',function(req,res,next){
+ router.get('/:id',function(req,res,next){
     
-Answer.getAnswerByQuestionId(function(err,rows){
+Answer.getAnswerByQuestionId(req.params.id,function(err,rows){
 
         if(err)
         {
