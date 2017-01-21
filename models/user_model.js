@@ -4,9 +4,15 @@ var User={
 
 getAllUsers:function(callback){
  
-return db.query("Select * from user_tbl",callback);
+return db.query("Select * from user_tbl where u_active='active'",callback);
  
 },
+getAllUsersflag:function(callback){
+ 
+return db.query("Select * from user_tbl where u_active='inactive'",callback);
+ 
+},
+
  getUserById:function(id,callback){
  
 return db.query("select * from user_tbl where u_email_id=?",[id],callback);
@@ -56,6 +62,10 @@ var delarr=[];
  
  updateUser:function(id,User,callback){
   return db.query("update user_tbl set u_name=?,u_photo=?,u_mobile_no=?,u_gender=? where u_email_id=?",[User.u_name,User.u_photo,User.u_mobile_no,User.u_gender,id],callback);
+ },
+
+ updateUserflag:function(id,User,callback){
+  return db.query("update user_tbl set u_active=? where u_email_id=?",[User.u_active,id],callback);
  }
  
 };

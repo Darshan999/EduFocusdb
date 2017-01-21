@@ -17,7 +17,13 @@ return db.query("Select g.*,s.*,u.* from group_tbl as g,subject_tbl as s,user_tb
 return db.query("select * from group_tbl where grp_id=?",[id],callback);
  },
  addGroup:function(Group,callback){
- return db.query("Insert into group_tbl values(?,?,?,?)",[Group.grp_id,Group.grp_date,Group.fk_sub_id,Group.fk_u_email_id],callback);
+
+      var d=new Date();
+     var x=d.getDate()+"-";
+     x+=(d.getMonth()+1)+"-";
+     x+=d.getFullYear();
+
+ return db.query("Insert into group_tbl values(?,?,?,?)",[Group.grp_id,x,Group.fk_sub_id,Group.fk_u_email_id],callback);
  },
 deleteGroup:function(id,callback){
   return db.query("delete from group_tbl where grp_id=?",[id],callback);

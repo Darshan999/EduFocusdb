@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cors=require('cors');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var userflag = require('./routes/userflag');
 var questions = require('./routes/questions');
 var questionjoin = require('./routes/questionjoin');
 var answerjoin = require('./routes/answerjoin');
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/userflag', userflag);
 app.use('/questions',questions);
 app.use('/questionjoin',questionjoin);
 app.use('/answerjoin',answerjoin);
